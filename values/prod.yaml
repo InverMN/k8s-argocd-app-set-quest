@@ -1,1 +1,1 @@
-name: prod-prod-test
+replicas: 5
