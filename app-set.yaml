@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: demo-app-set
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - cluster: engineering-dev
+        url: https://kubernetes.default.svc
+      # - cluster: engineering-prod
+      #   url: https://kubernetes.default.svc
+  template:
+    metadata:
+      name: '{{.cluster}}-demo'
+    spec:
+      project: "demo"
+      source:
+        repoURL: https://github.com/InverMN/k8s-argocd-app-set-quest
+        targetRevision: HEAD
+        path: apps/{{.cluster}}
+      destination:
+        server: '{{.url}}'
+        namespace: '{{.cluster}}-demo'
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true
