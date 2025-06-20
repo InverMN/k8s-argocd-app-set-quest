@@ -1,2 +1,3 @@
 replicas: 5
-spring-profile: prd
+spring:
+  profile: prd
