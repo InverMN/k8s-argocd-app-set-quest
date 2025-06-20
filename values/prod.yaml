@@ -1,3 +1,4 @@
 replicas: 5
 spring:
   profile: prd
+domain: prod.example.com
