@@ -34,6 +34,10 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /app
+        lifecycle:
+          preStop:
+            exec:
+              command: ["wget", "-q", "-O-", "http://localhost:8080/service/shutdown"]
         livenessProbe:
           tcpSocket:
             port: 80
