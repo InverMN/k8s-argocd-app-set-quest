@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: '{{ .Values.replicas | 1 }}'
+  replicas: '{{ .Values.replicas | default 1 }}'
   selector:
     matchLabels:
       app: nginx
