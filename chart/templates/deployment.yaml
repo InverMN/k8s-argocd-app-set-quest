@@ -29,12 +29,12 @@ spec:
           mountPath: /app
         livenessProbe:
           tcpSocket:
-            port: 8080
+            port: 80
           initialDelaySeconds: 10
           periodSeconds: 5
         readinessProbe:
           tcpSocket:
-            port: 8080
+            port: 80
           initialDelaySeconds: 5
           periodSeconds: 5
       volumes:
