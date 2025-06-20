@@ -1,23 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "nginx-chart.fullname" . }}
+  name: nginx-deployment
   labels:
-    app: {{ include "nginx-chart.name" . }}
+    app: nginx
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 3
   selector:
     matchLabels:
-      app: {{ include "nginx-chart.name" . }}
+      app: nginx
   template:
     metadata:
       labels:
-        app: {{ include "nginx-chart.name" . }}
+        app: nginx
     spec:
       containers:
-        - name: nginx
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - containerPort: 80
-          resources: {{- toYaml .Values.resources | nindent 12 }}
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
