@@ -30,7 +30,7 @@ spec:
             fieldRef:
               fieldPath: status.podIP
         args:
-        - --spring.profiles.active={{ .Values.spring-profile }}
+        - '--spring.profiles.active={{ .Values.spring-profile }}'
         volumeMounts:
         - name: config
           mountPath: /app
