@@ -4,6 +4,8 @@ metadata:
   name: deployment
   labels:
     app: nginx
+  annotations:
+    checksum: {{ .Values | toYaml | sha256sum }}
 spec:
   replicas: {{ .Values.replicas | default 1 }}
   selector:
