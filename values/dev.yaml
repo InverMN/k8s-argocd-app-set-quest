@@ -2,3 +2,7 @@ replicas: 3
 spring:
   profile: dev
 domain: dev.example.com
+database:
+  host: dev.db.example.com
+  user: application
+  password: $Tr0nG_pA$$vv0rD
