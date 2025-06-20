@@ -19,3 +19,13 @@ spec:
         image: nginx:1.14.2
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: config
+          mountPath: /app
+      volumes:
+      - name: config
+        configMap:
+          name: config-map
+          items:
+            - key: config.json
+              path: config.json
